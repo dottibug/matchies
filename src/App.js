@@ -1,32 +1,22 @@
 import styles from './app.module.css';
 import { useState, useEffect } from 'react';
 import { shuffleCards } from './helpers/shuffleCards';
-import Levels from './components/levels/levels';
 import Cards from './components/cards/cards';
+import Home from './components/home/home';
+import GameSettings from './components/gameSettings/gameSettings';
 
 /* 
 TODO 
 • TS
 */
 
-// 8, 12, 16, 20, 24, 32, 36
-const levelsArray = [
-  { name: 'beginner', cards: 8 }, // 4 pairs - 2 rows of 4
-  { name: 'easy', cards: 12 }, // 6 pairs - 3 rows of 4
-  { name: 'medium', cards: 16 }, // 8 pairs - 4 rows of 4
-  { name: 'hard', cards: 24 }, // 12 pairs - 6 rows of 4
-];
-
-const levels = {
-  beginner: 8,
-  easy: 12,
-  medium: 16,
-  hard: 24,
-};
-
 export default function App() {
   // STATE
-  const [level, setLevel] = useState(levels.beginner);
+  const [gameSettings, setGameSettings] = useState(null);
+  const [startGame, setStartGame] = useState(false);
+
+  const [level, setLevel] = useState(null);
+  const [deck, setDeck] = useState(null);
   const [cards, setCards] = useState([]);
 
   // EFFECTS
@@ -49,16 +39,35 @@ export default function App() {
     setCards(shuffledDeck);
   }, [level]);
 
+  // HANDLERS
+  const handleStartGame = () => {
+    setGameSettings(false);
+    setStartGame(true);
+  };
+
   return (
     <div className={styles['app']}>
       {/* TITLE */}
       <h1>Matchies</h1>
 
-      {/* LEVEL BUTTONS */}
-      <Levels setLevel={setLevel} />
+      {/* HOME */}
+      {!startGame && !gameSettings && <Home setGameSettings={setGameSettings} />}
 
-      {/* CARDS */}
-      {cards.length && <Cards cards={cards} setCards={setCards} />}
+      {/* GAME SETTINGS */}
+      {gameSettings && (
+        <GameSettings
+          level={level}
+          setLevel={setLevel}
+          deck={deck}
+          setDeck={setDeck}
+          handleStartGame={handleStartGame}
+        />
+      )}
+
+      {/* GAME */}
+      {startGame && cards.length && (
+        <Cards deck={deck} cards={cards} setCards={setCards} />
+      )}
     </div>
   );
 }

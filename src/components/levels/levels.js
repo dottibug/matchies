@@ -1,4 +1,5 @@
 import styles from './levels.module.css';
+import Button from '../ui/button';
 
 // 8, 12, 16, 20, 24, 32, 36
 const levelsArray = [
@@ -15,20 +16,27 @@ const levels = {
   hard: 24,
 };
 
-export default function Levels({ setLevel }) {
+export default function Levels({ level, setLevel }) {
   // HANDLERS
   const handleClickLevel = (e) => setLevel(levels[e.target.value]);
 
+  // STYLE
+  const tempLevelStyle = (lvl) => {
+    return {
+      border: level === lvl.cards ? '2px solid black' : 'none',
+    };
+  };
+
   return (
     <div className={styles['level-buttons']}>
-      {levelsArray.map((level) => (
-        <button
-          className={styles['btn-level']}
+      {levelsArray.map((lvl) => (
+        <Button
           onClick={handleClickLevel}
-          key={level.name}
-          value={level.name}>
-          {level.name}
-        </button>
+          key={lvl.name}
+          value={lvl.name}
+          style={tempLevelStyle(lvl)}>
+          {lvl.name}
+        </Button>
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import styles from './cards.module.css';
 import { useState, useEffect } from 'react';
 import { useCheckForMatch } from '../../hooks/useCheckForMatch';
 
-export default function Cards({ cards, setCards }) {
+export default function Cards({ deck, cards, setCards }) {
   // STATE
   const [flippedCards, setFlippedCards] = useState([]);
   const [win, setWin] = useState(false);
@@ -43,7 +43,9 @@ export default function Cards({ cards, setCards }) {
           <button
             key={`${card.name}-${i}`}
             className={styles['card']}
-            style={{ backgroundColor: card.matched || card.flipped ? 'white' : 'pink' }}
+            style={{
+              backgroundColor: card.matched || card.flipped ? 'white' : deck,
+            }}
             onClick={handleClickCard}
             data-card-name={card.name}
             data-card-index={i}
