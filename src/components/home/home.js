@@ -1,21 +1,20 @@
 import Button from '../ui/button';
 import styles from './home.module.css';
+import CreateAccount from '../createAccount/createAccount';
 
 export default function Home({ setGameSettings }) {
   // HANDLERS
-  const handleClickQuickGame = () => {
-    console.log('-- quick game');
-    setGameSettings(true);
-  };
+  const handleClickQuickGame = () => setGameSettings(true);
 
-  const handleClickLogin = () => console.log('-- login');
-  const handleClickCreateAccount = () => console.log('-- create account');
+  const handleClickLogin = () => {
+    console.log('-- login');
+  };
 
   return (
     <div className={styles['user-options']}>
       <Button onClick={handleClickQuickGame}>Quick Game</Button>
       <Button onClick={handleClickLogin}>Login</Button>
-      <Button onClick={handleClickCreateAccount}>Create Account</Button>
+      <CreateAccount />
     </div>
   );
 }
