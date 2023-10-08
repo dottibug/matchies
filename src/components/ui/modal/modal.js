@@ -30,14 +30,15 @@ export default function Modal({ closeModal, children }) {
   }, [closeModal]);
 
   const modal = (
-    <div className={styles['backdrop']} onClick={closeModal}>
+    <>
+      <div className={styles['backdrop']} onClick={closeModal} />
       <div className={styles['modal']}>
         <button onClick={closeModal} className={styles['btn-close-modal']}>
           &#215;
         </button>
         <div>{children}</div>
       </div>
-    </div>
+    </>
   );
 
   if (!showModal) return;

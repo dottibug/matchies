@@ -1,0 +1,27 @@
+.deck-options {
+    display: inline-flex;
+    gap: 2rem;
+}
+
+.deck-option {
+    width: 20rem;
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.deck-option:hover {
+    cursor: pointer;
+}
+
+.deck-theme {
+    font-size: 2rem;
+    font-weight: 600;
+    color: darkslategrey;
+    text-transform: capitalize;
+    letter-spacing: 0.05rem;
+}

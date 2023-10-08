@@ -1,6 +1,6 @@
 import styles from './gameSettings.module.css';
 import Levels from '../levels/levels';
-import Decks from '../decks/decks';
+import DeckOptions from '../deckOptions/deckOptions';
 import Button from '../ui/button';
 
 export default function GameSettings({
@@ -17,7 +17,7 @@ export default function GameSettings({
   return (
     <div className={styles['game-settings']}>
       <Levels level={level} setLevel={setLevel} />
-      <Decks deck={deck} setDeck={setDeck} />
+      <DeckOptions deck={deck} setDeck={setDeck} />
 
       <Button
         onClick={handleStartGame}
