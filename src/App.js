@@ -25,8 +25,6 @@ export default function App() {
     setStartGame(true);
   };
 
-  console.log('--- CARDS: ', cards);
-
   return (
     <div className={styles['app']}>
       {/* TITLE */}
