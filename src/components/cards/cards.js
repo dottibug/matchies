@@ -2,7 +2,7 @@ import styles from './cards.module.css';
 import { useState, useEffect } from 'react';
 import { useCheckForMatch } from '../../hooks/useCheckForMatch';
 
-export default function Cards({ deck, cards, setCards }) {
+export default function Cards({ cards, setCards }) {
   // STATE
   const [flippedCards, setFlippedCards] = useState([]);
   const [win, setWin] = useState(false);
@@ -18,6 +18,8 @@ export default function Cards({ deck, cards, setCards }) {
   useEffect(() => {
     if (matchedCards.length === 0) return;
     if (matchedCards.length === cards.length) setWin(true);
+
+    console.log('--- WIN ---');
   }, [matchedCards.length, cards.length]);
 
   // HANDLERS
@@ -36,21 +38,29 @@ export default function Cards({ deck, cards, setCards }) {
     setCards(updatedCards);
   };
 
+  const cardsStyle = {
+    gridTemplateColumns: cards.length < 18 ? `repeat (4, 1fr)` : `repeat(6, 1fr)`,
+  };
+
+  console.log('cards.lenght: ', cards.length);
+
   return (
-    <div className={styles['cards']}>
+    <div className={styles['cards']} style={cardsStyle}>
       {cards.map((card, i) => {
+        const { name, src, matched, flipped } = card;
+
         return (
           <button
-            key={`${card.name}-${i}`}
+            key={`${name}-${i}`}
             className={styles['card']}
             style={{
-              backgroundColor: card.matched || card.flipped ? 'white' : deck,
+              backgroundColor: matched || flipped ? 'white' : 'mediumseagreen',
             }}
             onClick={handleClickCard}
-            data-card-name={card.name}
+            data-card-name={name}
             data-card-index={i}
-            disabled={card.flipped || card.matched || checkingMatch || win}>
-            {card.flipped || card.matched ? card.name : ''}
+            disabled={flipped || matched || checkingMatch || win}>
+            {flipped || matched ? <img src={src} alt={name} /> : ''}
           </button>
         );
       })}

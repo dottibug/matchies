@@ -5,11 +5,19 @@ import { decks } from '../../decks/decks';
 
 export default function DeckOptions({ deck, setDeck }) {
   // HANDLERS
-  const handleClickDeckOption = (e) => setDeck(e.currentTarget.dataset.theme);
+  const handleClickDeckOption = (e) => {
+    const selectedDeck = decks.find(
+      (deck) => deck.theme === e.currentTarget.dataset.theme
+    );
+
+    setDeck(selectedDeck);
+  };
 
   //   STYLE
   const tempDeckStyle = (option) => {
-    return { border: deck === option.theme ? '2px solid black' : '2px solid lightgray' };
+    return {
+      border: deck?.theme === option.theme ? '2px solid black' : '2px solid lightgray',
+    };
   };
 
   return (
