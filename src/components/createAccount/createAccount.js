@@ -4,7 +4,7 @@ import Button from '../ui/button';
 import Modal from '../ui/modal/modal';
 import FormCreateAccount from './formCreateAccount';
 
-export default function CreateAccount() {
+export default function CreateAccount({ session }) {
   // STATE
   const [showAccountModal, setShowAccountModal] = useState(false);
   const [tempAccounts, setTempAccounts] = useState([]);
@@ -17,12 +17,23 @@ export default function CreateAccount() {
   // password
   // submit
 
+  /* 
+  supabase
+  create user 
+
+  username
+  icon
+  decks
+  games_played
+
+  */
+
   return (
     <>
       <Button onClick={handleClickCreateAccount}>Create Account</Button>
       {showAccountModal && (
         <Modal closeModal={handleCloseAccountModal}>
-          <FormCreateAccount />
+          <FormCreateAccount session={session} />
         </Modal>
       )}
     </>

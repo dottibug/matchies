@@ -1,14 +1,6 @@
 import styles from './createAccount.module.css';
 import { useState } from 'react';
-
-/* 
-
-user = {
-    username: 'abcdef',
-    icon: image or string?, 
-    gamesPlayed: 0, 
-}
-*/
+import { supabase } from '../../supabase/supabaseClient';
 
 const tempUserIcons = [
   { name: 'A' },
@@ -25,9 +17,10 @@ const tempUserIcons = [
   { name: 'L' },
 ];
 
-export default function FormCreateAccount() {
+export default function FormCreateAccount({ session }) {
   // STATE
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userIcon, setUserIcon] = useState(null);
 
@@ -35,19 +28,45 @@ export default function FormCreateAccount() {
 
   // HANDLERS
   const handleUsernameInput = (e) => setUsername(e.target.value);
-
+  const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
-
   const handleClickIcon = (e) => setUserIcon(e.target.value);
 
-  const handleSubmitCreateAccount = (e) => {
+  // TODO trycatch
+  const handleSubmitCreateAccount = async (e) => {
     e.preventDefault();
-
     const icon = userIcon || selectRandomIcon();
+    // const newUser = { username, icon: icon, gamesPlayed: 0 };
+    // setTempUsers((tempUsers) => [...tempUsers, newUser]);
 
-    const newUser = { username, icon: icon, gamesPlayed: 0 };
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+      });
 
-    setTempUsers((tempUsers) => [...tempUsers, newUser]);
+      if (error) throw Error(error);
+
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .insert([
+          {
+            email: email,
+            username: username,
+            icon: icon,
+            games_played: 0,
+            decks_unlocked: ['ocean', 'camping', 'sweets'],
+          },
+        ])
+        .select();
+
+      if (profileError) throw Error(profileError);
+      console.log('profile data: ', profileData);
+    } catch (error) {
+      // ERRORS TO HANDLE
+      // supabase password error: password should be at least 6 characters
+      console.log('supabase error: ', error);
+    }
   };
 
   // HELPERS
@@ -78,6 +97,10 @@ export default function FormCreateAccount() {
           name="username"
           type="text"
         />
+      </div>
+      <div className={styles['input']}>
+        <label htmlFor="email">Email</label>
+        <input onChange={handleEmailInput} value={email} name="email" type="email" />
       </div>
       <div className={styles['input']}>
         <label htmlFor="password">Password</label>
