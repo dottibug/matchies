@@ -1,5 +1,4 @@
 import styles from './app.module.css';
-import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import Cards from './components/cards/cards';
 import Home from './components/home/home';
@@ -9,6 +8,7 @@ import { supabase } from './supabase/supabaseClient';
 
 /* 
 TODO 
+- cards/setCards should exist only in the Cards component (and I think Cards would be better named as Game)
 • TS
 */
 
@@ -42,8 +42,6 @@ export default function App() {
     setStartGame(true);
   };
 
-  console.log('session: ', session);
-
   return (
     <div className={styles['app']}>
       {/* TITLE */}
@@ -72,7 +70,9 @@ export default function App() {
       )}
 
       {/* GAME */}
-      {startGame && cards.length && <Cards cards={cards} setCards={setCards} />}
+      {startGame && cards.length && (
+        <Cards deck={deck} cards={cards} setCards={setCards} />
+      )}
     </div>
   );
 }

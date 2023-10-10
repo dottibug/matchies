@@ -1,11 +1,12 @@
 import styles from './cards.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useCheckForMatch } from '../../hooks/useCheckForMatch';
+import { getCardBackgroundColor } from '../../helpers/getCardBackgroundColor';
+import { useCheckForWin } from '../../hooks/useCheckForWin';
 
-export default function Cards({ cards, setCards }) {
+export default function Cards({ deck, cards, setCards }) {
   // STATE
   const [flippedCards, setFlippedCards] = useState([]);
-  const [win, setWin] = useState(false);
 
   const [checkingMatch, matchedCards] = useCheckForMatch(
     flippedCards,
@@ -14,18 +15,12 @@ export default function Cards({ cards, setCards }) {
     setCards
   );
 
-  // CHECK FOR WIN
-  useEffect(() => {
-    if (matchedCards.length === 0) return;
-    if (matchedCards.length === cards.length) setWin(true);
-
-    console.log('--- WIN ---');
-  }, [matchedCards.length, cards.length]);
+  const [win, setWin] = useCheckForWin(matchedCards.length, cards.length);
 
   // HANDLERS
   const handleClickCard = (e) => {
-    const clickedCardName = e.target.dataset.cardName;
-    const clickedCardIndex = +e.target.dataset.cardIndex;
+    const clickedCardName = e.currentTarget.dataset.cardName;
+    const clickedCardIndex = +e.currentTarget.dataset.cardIndex;
     const clickedCard = { name: clickedCardName, index: clickedCardIndex };
 
     setFlippedCards((flippedCards) => [...flippedCards, clickedCard]);
@@ -42,25 +37,34 @@ export default function Cards({ cards, setCards }) {
     gridTemplateColumns: cards.length < 18 ? `repeat (4, 1fr)` : `repeat(6, 1fr)`,
   };
 
-  console.log('cards.lenght: ', cards.length);
+  const cardStyle = (matched, flipped) => {
+    return {
+      backgroundColor:
+        matched || flipped
+          ? 'white'
+          : getCardBackgroundColor(deck.cardBack.backgroundColor),
+    };
+  };
 
   return (
     <div className={styles['cards']} style={cardsStyle}>
       {cards.map((card, i) => {
-        const { name, src, matched, flipped } = card;
+        const { name, image, matched, flipped } = card;
 
         return (
           <button
             key={`${name}-${i}`}
             className={styles['card']}
-            style={{
-              backgroundColor: matched || flipped ? 'white' : 'mediumseagreen',
-            }}
+            style={cardStyle(matched, flipped)}
             onClick={handleClickCard}
             data-card-name={name}
             data-card-index={i}
             disabled={flipped || matched || checkingMatch || win}>
-            {flipped || matched ? <img src={src} alt={name} /> : ''}
+            {flipped || matched ? (
+              <img src={image} alt={name} />
+            ) : (
+              <img src={deck.cardBack.image} alt={deck.theme} />
+            )}
           </button>
         );
       })}

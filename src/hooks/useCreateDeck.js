@@ -21,10 +21,10 @@ export function useCreateDeck(startGame, level = 8, deck = decks[0]) {
     const randomCards = [...randomNums, ...randomNums].map((num) => deckCards[num]);
 
     const gameCards = randomCards.map((card) => {
-      const { name, src } = card;
+      const { name, image } = card;
       return {
         name,
-        src,
+        image,
         flipped: false,
         matched: false,
       };
