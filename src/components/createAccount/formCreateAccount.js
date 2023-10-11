@@ -38,10 +38,15 @@ export default function FormCreateAccount({ session }) {
 
       if (error) throw Error(error);
 
+      const {
+        user: { id },
+      } = data;
+
       const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .insert([
           {
+            user_uid: id,
             email: email,
             username: username,
             icon: userIcon || selectRandomIcon(),
