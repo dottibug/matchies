@@ -50,5 +50,3 @@ export const decks = cardFronts.map((card) => {
   const cardBack = cardBacks.find((back) => back.theme === card.theme);
   return { ...card, cardBack };
 });
-
-console.log(' decks: ', decks);

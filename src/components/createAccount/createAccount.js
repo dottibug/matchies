@@ -7,7 +7,6 @@ import FormCreateAccount from './formCreateAccount';
 export default function CreateAccount({ session }) {
   // STATE
   const [showAccountModal, setShowAccountModal] = useState(false);
-  const [tempAccounts, setTempAccounts] = useState([]);
 
   // HANDLERS
   const handleClickCreateAccount = () => setShowAccountModal(true);

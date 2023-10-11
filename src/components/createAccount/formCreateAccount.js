@@ -1,21 +1,13 @@
 import styles from './createAccount.module.css';
 import { useState } from 'react';
 import { supabase } from '../../supabase/supabaseClient';
+import { icons } from '../../icons/userIcons';
 
-const tempUserIcons = [
-  { name: 'A' },
-  { name: 'B' },
-  { name: 'C' },
-  { name: 'D' },
-  { name: 'E' },
-  { name: 'F' },
-  { name: 'G' },
-  { name: 'H' },
-  { name: 'I' },
-  { name: 'J' },
-  { name: 'K' },
-  { name: 'L' },
-];
+// HELPERS
+function selectRandomIcon() {
+  const randomNum = Math.floor(Math.random() * icons.length);
+  return icons[randomNum].name;
+}
 
 export default function FormCreateAccount({ session }) {
   // STATE
@@ -24,20 +16,19 @@ export default function FormCreateAccount({ session }) {
   const [password, setPassword] = useState('');
   const [userIcon, setUserIcon] = useState(null);
 
-  const [tempUsers, setTempUsers] = useState([]);
-
   // HANDLERS
   const handleUsernameInput = (e) => setUsername(e.target.value);
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
-  const handleClickIcon = (e) => setUserIcon(e.target.value);
+  const handleClickIcon = (e) => setUserIcon(e.currentTarget.dataset.iconName);
 
   // TODO trycatch
   const handleSubmitCreateAccount = async (e) => {
     e.preventDefault();
-    const icon = userIcon || selectRandomIcon();
+
+    // make sure username input meets requirements (isn't blank and certain length)
+    // make sure the password input meeets requirements
     // const newUser = { username, icon: icon, gamesPlayed: 0 };
-    // setTempUsers((tempUsers) => [...tempUsers, newUser]);
 
     try {
       const { data, error } = await supabase.auth.signUp({
@@ -53,7 +44,7 @@ export default function FormCreateAccount({ session }) {
           {
             email: email,
             username: username,
-            icon: icon,
+            icon: userIcon || selectRandomIcon(),
             games_played: 0,
             decks_unlocked: ['ocean', 'camping', 'sweets'],
           },
@@ -69,22 +60,9 @@ export default function FormCreateAccount({ session }) {
     }
   };
 
-  // HELPERS
-  function selectRandomIcon() {
-    const numIcons = tempUserIcons.length;
-    const randomNum = Math.floor(Math.random() * numIcons);
-    return tempUserIcons[randomNum].name;
-  }
-
   // STYLE
-  const tempIconStyle = {
-    borderRadius: '50%',
-    height: '6rem',
-    width: '6rem',
-    border: 'none',
-    backgroundColor: 'cadetblue',
-    fontSize: '4rem',
-    color: 'white',
+  const iconStyle = (iconName) => {
+    return { backgroundColor: iconName === userIcon && 'cadetblue' };
   };
 
   return (
@@ -114,15 +92,18 @@ export default function FormCreateAccount({ session }) {
       <div className={styles['select-user-icon']}>
         <label htmlFor="user-icon">User Icon</label>
         <div className={styles['user-icon-options']}>
-          {tempUserIcons.map((icon) => (
-            <button
-              onClick={handleClickIcon}
-              key={icon.name}
-              name="user-icon"
-              style={tempIconStyle}>
-              {icon.name}
-            </button>
-          ))}
+          {icons.map((icon) => {
+            return (
+              <div
+                key={icon.name}
+                onClick={handleClickIcon}
+                data-icon-name={icon.name}
+                className={styles['icon-image-wrapper']}
+                style={iconStyle(icon.name)}>
+                <img className={styles['icon-image']} src={icon.image} alt={icon.name} />
+              </div>
+            );
+          })}
         </div>
       </div>
       <button type="submit">Create Account</button>
