@@ -1,6 +1,10 @@
 import styles from './login.module.css';
 import { useState } from 'react';
 import { supabase } from '../../supabase/supabaseClient';
+import Form from '../ui/form';
+import EmailInput from '../ui/inputs/emailInput';
+import PasswordInput from '../ui/inputs/passwordInput';
+import SubmitButton from '../ui/buttons/submitButton';
 
 export default function FormLogin({ setShowLoginModal }) {
   const [email, setEmail] = useState('');
@@ -29,21 +33,10 @@ export default function FormLogin({ setShowLoginModal }) {
   const handlePasswordInput = (e) => setPassword(e.target.value);
 
   return (
-    <form onSubmit={handleSubmitLogin} className={styles['form']}>
-      <div className={styles['input']}>
-        <label htmlFor="email">Email</label>
-        <input onChange={handleEmailInput} value={email} name="email" type="email" />
-      </div>
-      <div className={styles['input']}>
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={handlePasswordInput}
-          value={password}
-          name="password"
-          type="password"
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <Form onSubmit={handleSubmitLogin}>
+      <EmailInput onChange={handleEmailInput} value={email} />
+      <PasswordInput onChange={handlePasswordInput} value={password} />
+      <SubmitButton text="Login" />
+    </Form>
   );
 }

@@ -2,6 +2,12 @@ import styles from './createAccount.module.css';
 import { useState } from 'react';
 import { supabase } from '../../supabase/supabaseClient';
 import { icons } from '../../icons/userIcons';
+import TextInput from '../ui/inputs/textInput';
+import EmailInput from '../ui/inputs/emailInput';
+import PasswordInput from '../ui/inputs/passwordInput';
+import Form from '../ui/form';
+import SubmitButton from '../ui/buttons/submitButton';
+import UserIconOptions from '../userIcons/userIconOptions';
 
 // HELPERS
 function selectRandomIcon() {
@@ -20,9 +26,7 @@ export default function FormCreateAccount({ session }) {
   const handleUsernameInput = (e) => setUsername(e.target.value);
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
-  const handleClickIcon = (e) => setUserIcon(e.currentTarget.dataset.iconName);
 
-  // TODO trycatch
   const handleSubmitCreateAccount = async (e) => {
     e.preventDefault();
 
@@ -65,53 +69,13 @@ export default function FormCreateAccount({ session }) {
     }
   };
 
-  // STYLE
-  const iconStyle = (iconName) => {
-    return { backgroundColor: iconName === userIcon && 'cadetblue' };
-  };
-
   return (
-    <form onSubmit={handleSubmitCreateAccount} className={styles['form']}>
-      <div className={styles['input']}>
-        <label htmlFor="username">Username</label>
-        <input
-          onChange={handleUsernameInput}
-          value={username}
-          name="username"
-          type="text"
-        />
-      </div>
-      <div className={styles['input']}>
-        <label htmlFor="email">Email</label>
-        <input onChange={handleEmailInput} value={email} name="email" type="email" />
-      </div>
-      <div className={styles['input']}>
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={handlePasswordInput}
-          value={password}
-          name="password"
-          type="text"
-        />
-      </div>
-      <div className={styles['select-user-icon']}>
-        <label htmlFor="user-icon">User Icon</label>
-        <div className={styles['user-icon-options']}>
-          {icons.map((icon) => {
-            return (
-              <div
-                key={icon.name}
-                onClick={handleClickIcon}
-                data-icon-name={icon.name}
-                className={styles['icon-image-wrapper']}
-                style={iconStyle(icon.name)}>
-                <img className={styles['icon-image']} src={icon.image} alt={icon.name} />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <button type="submit">Create Account</button>
-    </form>
+    <Form onSubmit={handleSubmitCreateAccount}>
+      <TextInput value={username} onChange={handleUsernameInput} inputName="Username" />
+      <EmailInput onChange={handleEmailInput} value={email} />
+      <PasswordInput onChange={handlePasswordInput} value={password} />
+      <UserIconOptions userIcon={userIcon} setUserIcon={setUserIcon} />
+      <SubmitButton text="Create Account" />
+    </Form>
   );
 }
