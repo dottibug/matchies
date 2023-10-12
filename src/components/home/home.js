@@ -4,41 +4,30 @@ import CreateAccount from '../createAccount/createAccount';
 import { supabase } from '../../supabase/supabaseClient';
 import { useState } from 'react';
 import Login from '../login/login';
+import Modal from '../ui/modal/modal';
+import FormResetPassword from '../resetPassword/formResetPassword';
 
 export default function Home({ setGameSettings, session }) {
+  const [showResetPasswordModal, setShowResetPasswordModal] = useState(false);
+
   // HANDLERS
   const handleClickQuickGame = () => setGameSettings(true);
 
-  // const handleClickLogin = async () => {
-  //   console.log('-- login');
-  //   setShowLogin(true);
+  const handleClickResetPassword = () => setShowResetPasswordModal(true);
 
-  //   //     const { data, error } = await supabase.auth.signInWithPassword({
-  //   //   email: 'someone@email.com',
-  //   //   password: 'HUwGdpDnxavlZYxbnXlI'
-  //   // })
-  // };
-
-  // const handleClickLogout = async () => {
-  //   console.log('-- logout');
-
-  //   try {
-  //     const { error } = await supabase.auth.signOut();
-  //     if (error) throw Error(error);
-  //   } catch (error) {
-  //     console.log(`⛔️ ERROR logging out: ${error}`);
-  //   }
-  // };
-
-  // console.log('session: ', session);
+  const handleCloseResetPassword = () => setShowResetPasswordModal(false);
 
   return (
     <div className={styles['user-options']}>
       <Button onClick={handleClickQuickGame}>Quick Game</Button>
-      {/* {!session && <Button onClick={handleClickLogin}>Login</Button>}
-      {session && <Button onClick={handleClickLogout}>Logout</Button>} */}
       <Login session={session} />
       <CreateAccount />
+      <button onClick={handleClickResetPassword}>Reset Password</button>
+      {showResetPasswordModal && (
+        <Modal closeModal={handleCloseResetPassword}>
+          <FormResetPassword setShowResetPasswordModal={setShowResetPasswordModal} />
+        </Modal>
+      )}
     </div>
   );
 }
