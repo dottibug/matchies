@@ -5,6 +5,7 @@ export default function PasswordInput({
   onChange,
   placeholder = 'Enter password',
   customClass,
+  error,
   ...props
 }) {
   return (
@@ -21,6 +22,7 @@ export default function PasswordInput({
         placeholder={placeholder}
         {...props}
       />
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 }

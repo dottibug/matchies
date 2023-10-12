@@ -6,6 +6,7 @@ export default function TextInput({
   inputName,
   placeholder = `Enter ${inputName.toLowerCase()}`,
   customClass,
+  error,
   ...props
 }) {
   return (
@@ -22,6 +23,7 @@ export default function TextInput({
         placeholder={placeholder}
         {...props}
       />
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 }
