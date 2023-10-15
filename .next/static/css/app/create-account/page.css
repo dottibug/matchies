@@ -1,0 +1,93 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/inputs/inputErrorMessage.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.inputErrorMessage_input-error-message__IMqgA {
+    color: #E05B4F;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/inputs/input.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/* SCREEN READER */
+/* Content visible only to screen readers */
+/* https://css-tricks.com/inclusively-hidden/ */
+.input_sr-only__grm_f:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.input_input__LGzGR {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_input-field__VwVOR {
+    padding: 1rem 2rem;
+    border-radius: 4rem;
+    font-size: 1.8rem;
+    border-style: solid;
+    font-family: sans-serif;
+}
+
+.input_input-field__VwVOR::placeholder {
+    font-family: sans-serif;
+}
+
+.input_error__5_ohh {
+    border-color: #E05B4F;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/userIconOptions/userIconOptions.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+.userIconOptions_select-user-icon__X6oTf {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.userIconOptions_user-icon-options__4knXF {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    row-gap: 4rem;
+    column-gap: 3rem;
+}
+
+.userIconOptions_icon-image-wrapper__6fvW4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    height: 8rem;
+    width: 8rem;
+    transition: all 0.1s ease-out;
+    position: relative;
+}
+
+.userIconOptions_icon-image-wrapper__6fvW4:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.userIconOptions_icon-image__qgz3f {
+    display: block;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./app/create-account/createAccount.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+.createAccount_form-create-account__7mn8a {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}

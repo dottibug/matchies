@@ -1,0 +1,17 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app-button {
+    padding: 1rem 4rem;
+    border-radius: 2rem;
+    background-color: #FFA69E;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+}

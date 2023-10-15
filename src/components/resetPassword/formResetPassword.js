@@ -45,7 +45,7 @@ export default function FormResetPassword({ setShowResetPasswordModal }) {
         error={error?.password}
       />
       <SubmitButton text="Reset Password" />
-      {error && <div>{`Error to handle: ${error?.updateUser}`}</div>}
+      {error && <div>{`Error to handle: ${error?.updateUser}`}</div>}/
     </Form>
   );
 }

@@ -1,0 +1,140 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/inputs/inputErrorMessage.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.inputErrorMessage_input-error-message__IMqgA {
+    color: #E05B4F;
+    font-family: sans-serif;
+    font-size: 1.6rem;
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/inputs/input.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/* SCREEN READER */
+/* Content visible only to screen readers */
+/* https://css-tricks.com/inclusively-hidden/ */
+.input_sr-only__grm_f:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.input_input__LGzGR {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_input-field__VwVOR {
+    padding: 1rem 2rem;
+    border-radius: 4rem;
+    font-size: 1.8rem;
+    border-style: solid;
+    font-family: sans-serif;
+}
+
+.input_input-field__VwVOR::placeholder {
+    font-family: sans-serif;
+}
+
+.input_error__5_ohh {
+    border-color: #E05B4F;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/modal/modal.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.modal_backdrop__Y5MNk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000e1;
+}
+
+.modal_modal__fxUI5 {
+    padding: 2rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    max-height: 80vh;
+    overflow: scroll;
+    width: 50vw;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: white;
+    position: relative;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal_btn-close-modal__Gcm18 {
+    width: 4rem;
+    height: 4rem;
+    font-size: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    border: none;
+    color: white;
+    background-color: #FFA69E;
+    font-weight: 600;
+    transition: background-color 0.1s ease-out;
+}
+
+.modal_btn-close-modal__Gcm18:hover {
+    cursor: pointer;
+    background-color: #EA7469;
+}
+
+.modal_btn-close-modal-x__LwJz5 {
+    margin-bottom: 0.1rem;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/forms/resetPassword/resetPasswordForm.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.resetPasswordForm_form-reset-password__jrbg_ {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./app/login/login.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.login_form-login__ixtFg {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login_login-error-message__wlkNc {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.login_error-text__9Ss8B {}
+
+.login_forgot-password-text__j22H_ {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: darkgray;
+    transition: color 0.1s ease-out;
+}
+
+.login_forgot-password-text__j22H_:hover {
+    cursor: pointer;
+    color: black;
+}
