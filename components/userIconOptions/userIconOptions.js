@@ -23,7 +23,13 @@ export default function UserIconOptions({ selectedIcon, setSelectedIcon }) {
             className={styles['icon-image-wrapper']}
             style={iconStyle(icon.name)}
             key={icon.name}>
-            <Image src={icon.imagePath} alt={icon.name} fill={true} sizes="auto" />
+            <Image
+              src={icon.imagePath}
+              alt={icon.name}
+              fill={true}
+              sizes="auto"
+              quality={100}
+            />
           </div>
         ))}
       </div>

@@ -1,0 +1,38 @@
+.deck-options {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    margin: 2rem 0;
+}
+
+.deck-option-image-wrapper {
+    border-radius: 100px;
+    transition: all 0.2s ease-out;
+}
+
+.deck-option-image-wrapper:hover,
+.active {
+    box-shadow: 0px 0px 0px 5px #282F44;
+}
+
+.deck-option {
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.deck-option:hover {
+    cursor: pointer;
+}
+
+.deck-theme {
+    font-size: 2rem;
+    font-weight: 600;
+    color: darkslategrey;
+    text-transform: capitalize;
+    letter-spacing: 0.05rem;
+}

@@ -1,5 +1,6 @@
 // NextJS 13 root layout
 import './global.css';
+import Body from '@/components/body/body';
 
 /* 
 TS
@@ -19,10 +20,7 @@ export default function RootLayout({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        <div id="modal" />
-      </body>
+      <Body>{children}</Body>
     </html>
   );
 }

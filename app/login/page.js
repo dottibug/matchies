@@ -33,7 +33,7 @@ export default function Login() {
       await validateEmail(email);
       await handleUserLogin(supabase, email, password);
       console.log('-- LOGIN SUCCESSFUL -- ');
-      router.refresh();
+      router.push('http://localhost:3000');
     } catch (error) {
       // Example error: { login: 'error message' }
       setError({ [error.type]: error.message });
@@ -43,6 +43,8 @@ export default function Login() {
   const handleForgotPassword = () => setShowResetPasswordModal(true);
 
   // TODO handle supabase errors
+
+  // TODO on successful login, route user to home page
 
   return (
     <>
