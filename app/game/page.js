@@ -51,11 +51,19 @@ export default function Game() {
     };
   };
 
+  const cardImageWrapperStyle = (matched, flipped) => {
+    return {
+      width: matched || flipped ? '12rem' : '14rem',
+      height: matched || flipped ? '12rem' : '14rem',
+    };
+  };
+
   return (
     <div className={styles['cards']}>
       {cards.map((card, i) => {
         const { name, imagePath, imageAlt, flipped, matched } = card;
 
+        // TODO change these from buttons to div, but need to come up with an idea for disabling clicking on cards
         return (
           <button
             key={`${name}=${i}`}
@@ -65,11 +73,18 @@ export default function Game() {
             data-card-name={name}
             data-card-index={i}
             disabled={flipped || matched || checkingMatch || win}>
-            <Image
-              src={flipped || matched ? imagePath : cardBack.imagePath}
-              alt={flipped || matched ? imageAlt : cardBack.imageAlt}
-              fill={true}
-            />
+            <div
+              className={styles['card-image-wrapper']}
+              style={cardImageWrapperStyle(matched, flipped)}>
+              <Image
+                src={flipped || matched ? imagePath : cardBack.imagePath}
+                alt={flipped || matched ? imageAlt : cardBack.imageAlt}
+                fill={true}
+                sizes="auto"
+                quality={100}
+                priority
+              />
+            </div>
           </button>
         );
       })}

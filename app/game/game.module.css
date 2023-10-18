@@ -25,3 +25,9 @@
 .card:disabled {
     color: gray;
 }
+
+.card-image-wrapper {
+    position: relative;
+    height: 14rem;
+    width: 14rem;
+}
