@@ -1,6 +1,81 @@
 .button {
-    padding: 1rem;
-    width: 12rem;
-    text-transform: uppercase;
-    font-size: 1.6rem;
+    border-radius: 100rem;
+    font-family: sans-serif;
+    transition: all 0.1s ease-out;
+    border-style: solid;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+/* SOLID BUTTONS */
+.button.solid.primary {
+    background-color: #FFA69E;
+    border-color: #FFA69E;
+    color: white;
+}
+
+.button.solid.primary:hover {
+    background-color: #EA7469;
+    border-color: #EA7469;
+}
+
+.button.solid.accent {
+    background-color: #4E5364;
+    border-color: #4E5364;
+    color: white;
+}
+
+.button.solid.accent:hover {
+    background-color: #282F44;
+    border-color: #282F44;
+}
+
+
+/* OUTLINE BUTTONS */
+.button.outline.primary {
+    background-color: white;
+    color: #FFA69E;
+    border-color: #FFA69E;
+}
+
+.button.outline.primary:hover {
+    background-color: #FFA69E;
+    color: white;
+}
+
+.button.outline.accent {
+    background-color: white;
+    color: #4E5364;
+    border-color: #4E5364;
+}
+
+.button.outline.accent:hover {
+    background-color: #4E5364;
+    color: white;
+}
+
+/* SIZES */
+.small {
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    border-width: 3px;
+}
+
+.medium {
+    padding: 1rem 3rem;
+    font-weight: 600;
+    font-size: 1.8rem;
+    border-width: 3px;
+}
+
+.large {
+    padding: 1rem 4rem;
+    font-weight: 600;
+    font-size: 2.4rem;
+    border-width: 3px;
 }

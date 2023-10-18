@@ -5,9 +5,9 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import Form from '@/components/forms/form';
 import InputField from '@/components/inputs/inputField';
-import SubmitButton from '@/components/buttons/submitButton';
 import { handleUpdatePassword } from './helpers/handleUpdatePassword';
 import { validatePassword } from '@/components/inputs/helpers/validatePassword';
+import Button from '@/components/buttons/button';
 
 export default function ResetPassword() {
   const router = useRouter();
@@ -49,7 +49,9 @@ export default function ResetPassword() {
           onChange={handlePasswordInput}
           error={error?.password}
         />
-        <SubmitButton text="Update Password" />
+        <Button type="submit" width="24rem">
+          Update Password
+        </Button>
       </Form>
     </>
   );

@@ -5,12 +5,12 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import Form from '@/components/forms/form';
 import InputField from '@/components/inputs/inputField';
-import SubmitButton from '@/components/buttons/submitButton';
 import { validateEmail } from '@/components/inputs/helpers/validateEmail';
 import { handleUserLogin } from './helpers/handleUserLogin';
 import InputErrorMessage from '@/components/inputs/errorMessage';
 import Modal from '@/components/modal/modal';
 import ResetPasswordForm from '@/components/forms/resetPassword/resetPasswordForm';
+import Button from '@/components/buttons/button';
 
 export default function Login() {
   const router = useRouter();
@@ -77,10 +77,12 @@ export default function Login() {
             </div>
           </InputErrorMessage>
         )}
-        <SubmitButton text="Login" />
-        <button onClick={handleForgotPassword} type="button">
+        <Button type="submit" width="30rem">
+          Login
+        </Button>
+        <Button onClick={handleForgotPassword} color="accent" width="30rem">
           Forgot Password
-        </button>
+        </Button>
       </Form>
       {showResetPasswordModal && (
         <Modal closeModal={() => setShowResetPasswordModal(false)}>

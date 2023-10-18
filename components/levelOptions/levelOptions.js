@@ -3,6 +3,7 @@ import styles from './levelOptions.module.css';
 import { useContext } from 'react';
 import { GameContext } from '@/context/gameContext';
 import { levels } from '@/config/gameConfig';
+import Button from '@/components/buttons/button';
 
 export default function LevelOptions() {
   // CONTEXT
@@ -15,10 +16,13 @@ export default function LevelOptions() {
     setGameLevel((prevState) => ({ ...prevState, name: levelName, cards: levelCards }));
   };
 
-  const levelOptionClass = (name) => {
-    return [styles['level-option'], styles[name === gameLevel.name ? 'active' : '']].join(
-      ' '
-    );
+  // STYLE
+  const levelButtonStyle = (name) => {
+    if (name !== gameLevel.name) return;
+    return {
+      backgroundColor: '#EA7469',
+      borderColor: '#EA7469',
+    };
   };
 
   return (
@@ -26,14 +30,15 @@ export default function LevelOptions() {
       {levels.map((level) => {
         const { name, cards } = level;
         return (
-          <div
+          <Button
             onClick={handleClickLevel}
+            size="large"
             data-level-name={name}
             data-level-cards={cards}
             key={name}
-            className={levelOptionClass(name)}>
+            style={levelButtonStyle(name)}>
             {name}
-          </div>
+          </Button>
         );
       })}
     </div>

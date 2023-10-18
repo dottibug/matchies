@@ -6,12 +6,12 @@ import { useRouter } from 'next/navigation';
 import Form from '@/components/forms/form';
 import InputField from '@/components/inputs/inputField';
 import UserIconOptions from '@/components/userIconOptions/userIconOptions';
-import SubmitButton from '@/components/buttons/submitButton';
 import { handleUserSignUp } from './helpers/handleUserSignUp';
 import { handleUserProfileCreation } from './helpers/handleUserProfileCreation';
 import { validateUsername } from '@/components/inputs/helpers/validateUsername';
 import { validateEmail } from '@/components/inputs/helpers/validateEmail';
 import { validatePassword } from '@/components/inputs/helpers/validatePassword';
+import Button from '@/components/buttons/button';
 /*
 errors to handle
 1. SUPABASE ERROR:  User already registered
@@ -64,8 +64,10 @@ export default function CreateAccount() {
   // if user already registered, error modal that says "Oops! That user is already registered. Would you like to sign in?" and show a login form in the modal, as well as a "forgot password" option
 
   return (
-    <Form className={styles['form-create-account']} onSubmit={handleCreateAccount}>
-      <h1>Create Account</h1>
+    <Form
+      className={styles['form-create-account']}
+      onSubmit={handleCreateAccount}
+      title="Create Account">
       <InputField
         type="text"
         inputName="Username"
@@ -88,7 +90,9 @@ export default function CreateAccount() {
         error={error?.password}
       />
       <UserIconOptions selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
-      <SubmitButton text="Create Account" />
+      <Button type="submit" width="24rem">
+        Create Account
+      </Button>
     </Form>
   );
 }

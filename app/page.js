@@ -2,9 +2,9 @@
 'use client';
 import styles from './page.module.css';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { getUsername } from '../supabase/getUsername';
 import { getClientSession } from '../supabase/getSession';
+import LinkButton from '@/components/buttons/linkButton';
 
 /*
 TS
@@ -47,10 +47,11 @@ export default function Page() {
         <h2>{`Welcome back, ${username.at(0).toUpperCase()}${username.slice(1)}`}</h2>
       )}
 
+      {/* TODO if user session, show a logout button instead of login */}
       {links.map((link) => (
-        <Link href={link.href} key={link.name} className={styles['app-button']}>
+        <LinkButton href={link.href} appRoute={true} width="24rem" key={link.name}>
           {link.name}
-        </Link>
+        </LinkButton>
       ))}
     </div>
   );

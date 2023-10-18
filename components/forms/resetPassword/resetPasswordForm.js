@@ -3,12 +3,12 @@ import styles from './resetPasswordForm.module.css';
 import { useState } from 'react';
 import Form from '@/components/forms/form';
 import InputField from '@/components/inputs/inputField';
-import SubmitButton from '@/components/buttons/submitButton';
 import { validateEmail } from '@/components/inputs/helpers/validateEmail';
 import { resetPassword } from './helpers/resetPassword';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import ResetPasswordSuccess from './resetPasswordSuccess';
+import Button from '@/components/buttons/button';
 
 export default function ResetPasswordForm({ initialEmail = '' }) {
   const router = useRouter();
@@ -49,7 +49,9 @@ export default function ResetPasswordForm({ initialEmail = '' }) {
             error={error?.email || error?.resetPassword}
             autoFocus={email !== ''}
           />
-          <SubmitButton text="Reset Password" />
+          <Button type="submit" width="24rem">
+            Reset Password
+          </Button>
         </Form>
       )}
       {resetSuccess && <ResetPasswordSuccess email={email} />}
