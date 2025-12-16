@@ -1,6 +1,6 @@
 // Difficulty levels for the game (how many pairs of cards to match)
-export type Level = 'easy' | 'medium' | 'hard' | 'expert';
-export type Pairs = 6 | 8 | 12 | 18;
+export type Level = 'easy' | 'medium' | 'hard';
+export type Pairs = 6 | 8 | 12;
 
 // Grid size depends on the difficulty level
 export type Grid = {

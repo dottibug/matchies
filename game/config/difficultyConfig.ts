@@ -23,11 +23,4 @@ export const DIFFICULTY_CONFIG: Record<Level, DifficultyConfig> = {
       cols: 6,
     },
   },
-  expert: {
-    pairs: 18,
-    grid: {
-      rows: 6,
-      cols: 6,
-    },
-  },
 };
