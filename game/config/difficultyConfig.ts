@@ -1,6 +1,5 @@
 import type { Level, DifficultyConfig } from '../models/Difficulty';
 
-// Expert difficulty requires a larger grid size; only available on tablets and larger screens
 export const DIFFICULTY_CONFIG: Record<Level, DifficultyConfig> = {
   easy: {
     pairs: 6,
